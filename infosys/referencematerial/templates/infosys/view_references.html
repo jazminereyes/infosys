@@ -1,0 +1,27 @@
+{% extends 'layouts/base.html' %}
+
+{% block main_content %}
+<div class="site-section" id="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 mb-5">
+                <h1 class="text-white serif text-uppercase mb-4">References</h1>
+                <h5 class="text-white mt-0">{{ subject.subject_name }}</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 bg-light">
+                {% for reference in object_list %}
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <p>- {{ reference.reference_name }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

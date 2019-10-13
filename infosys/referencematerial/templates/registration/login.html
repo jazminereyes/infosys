@@ -1,0 +1,41 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block main_content %}
+<div class="site-section" id="home-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 mb-5">
+          <h1 class="text-white serif text-uppercase mb-4">Login</h1>
+          <form method="POST">
+            {% csrf_token %} 
+
+            {% if form.errors %}
+                <p class="text-info">Invalid user credentials.</p>
+            {% endif %}
+
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="text" class="form-control" placeholder="Username" name="username" required id="id_username">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <input type="password" class="form-control" placeholder="Password" name="password" required id="id_password">
+                </div>
+            </div>
+
+            <input type="hidden" name="next" value="{{ next }}"/>
+            
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <input type="submit" value="Sign In" class="btn btn-white">
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
