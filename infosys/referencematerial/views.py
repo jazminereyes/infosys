@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
-from django.views import View
-from django.db.models import Q
-from django.utils.decorators import method_decorator
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-from django.views.generic.list import ListView
 from django.contrib.auth.forms import UserCreationForm
+from django.db.models import Q
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render
+from django.utils.decorators import method_decorator
+from django.views import View
+from django.views.generic.list import ListView
 from .forms import SubjectForm
 from .models import Subject, ReferenceMaterial
+import json
 
 # Create your views here.
 class IndexView(View):
@@ -74,3 +77,15 @@ class ReferenceListView(ListView):
             'subject': self.get_object(),
         })
         return context
+
+
+def LoadSubjects(request):
+    year_level = request.GET.get('year_level')
+    semester = request.GET.get('semester')
+    subjects = Subject.objects.filter(
+        Q(year_level=year_level) &
+        Q(semester=semester)
+    ).values()
+    
+    return JsonResponse(list(subjects), safe=False)
+    

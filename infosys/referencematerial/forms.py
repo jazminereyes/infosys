@@ -1,4 +1,5 @@
 from django import forms
+from django.db.models import Q
 from .models import Subject
 
 class SubjectForm(forms.Form):
@@ -27,4 +28,7 @@ class SubjectForm(forms.Form):
         super(SubjectForm, self).__init__(*args, **kwargs)
 
         subject = Subject.objects.all()
-        self.fields['subject'].queryset = subject
+        self.fields['subject'].queryset = Subject.objects.filter(
+            Q(year_level='1st') &
+            Q(semester='1st')
+        )

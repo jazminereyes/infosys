@@ -38,3 +38,40 @@
         </div>
       </div>
 {% endblock %}
+
+{% block js %}
+<script>
+    $(document).ready(function() {
+        $('#id_year_level').change(function(){
+            var year_level = $(this).val();
+            var semester = $('#id_semester').val();
+            ajax_load(year_level, semester);            
+        });
+
+        $('#id_semester').change(function(){
+            var semester = $(this).val();
+            var year_level = $('#id_year_level').val();
+            ajax_load(year_level, semester);            
+        });
+
+        function ajax_load(year_level, semester){
+            var url = '/subjects/';
+            $.ajax({
+                url: url,
+                datatype: 'json',
+                data: {
+                    'year_level': year_level,
+                    'semester': semester
+                },
+                success: function(data){
+                    console.log(data);
+                    $('#id_subject option').remove();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#id_subject").append('<option value="'+ data[i].id + '">'+ data[i].subject_name +'</option>');
+                    };
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}

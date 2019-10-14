@@ -46,7 +46,6 @@ class Subject(models.Model):
         ('2nd', '2nd Year'),
         ('3rd', '3rd Year'),
         ('4th', '4th Year'),
-        ('5th', '5th year'),
     )
 
     SEMESTER_CHOICES = (

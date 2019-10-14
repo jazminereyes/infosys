@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^register/$', RegisterView.as_view(), name='register'),
     url(r'^reference/$', FindReferenceView.as_view(), name='reference'),
     url(r'^view/$', ReferenceListView.as_view(), name='view_reference'),
+    url(r'^subjects/$', views.LoadSubjects, name='ajax_load_subjects'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
