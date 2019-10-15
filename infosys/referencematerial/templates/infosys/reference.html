@@ -1,5 +1,18 @@
 {% extends 'layouts/base.html' %}
 
+{% block css %}
+<style>
+    .form-control:focus{
+        outline:none;
+        border:none;
+    }
+    .form-control{
+        padding-left: 20px;
+        border-radius: 10px;
+    }
+</style>
+{% endblock %}
+
 {% block main_content %}
 <div class="site-section" id="home-section">
         <div class="container">
