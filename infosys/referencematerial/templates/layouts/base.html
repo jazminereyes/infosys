@@ -73,15 +73,20 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-5 mb-5 mb-lg-0">
-            <div class="row mb-5">
+            <div class="row mb-3">
               <div class="col-12">
                 <h3 class="footer-heading mb-4">About Us</h3>
                 <p>A collection of reference materials such as book, e-books, pdf files, etc. affiliated to Industrial Engineering. It will be classified based on the subjects of the Polytechnic University of the Philippines IE Curriculum per year level and per semester.</p>
               </div>
             </div>
-            
-
-            
+            <div class="row">
+              <div class="col-md-2">
+                <img src="{% static 'images/PUP LOGO.png' %}" alt="" class="img-fluid">
+              </div>
+              <div class="col-md-2">
+                <img src="{% static 'images/IE LOGO.png' %}" alt="" class="img-fluid">
+              </div>
+            </div>
           </div>
           <div class="col-lg-2 ml-auto">
            
@@ -89,7 +94,7 @@
               <div class="col-md-12">
                 <h3 class="footer-heading mb-4">Navigation</h3>
               </div>
-              <div class="col-md-8">
+              <div class="col-md-12">
                 <ul class="list-unstyled">
                   <li><a href="{% url 'index' %}">Home</a></li>
                   <li><a href="{% url 'reference' %}">Find a Reference</a></li>
